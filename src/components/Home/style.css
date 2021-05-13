@@ -15,7 +15,7 @@
 
 .home .title p {
   line-height: 50px;
-  color: antiquewhite;
+  color: #bbbbbb;
 }
 
 .home .title button {
@@ -37,7 +37,7 @@
 }
 
 .home .person img {
-  width: 75%;
+  width: 70%;
 }
 
 @media (min-width: 800px) {

@@ -10,13 +10,13 @@ const Home = () => {
           <p>Full Stack</p>
           <p>Web Design</p>
         </h1>
-        <Link to="about">
+        <Link to="/about">
           <button>Hire Me</button>
         </Link>
       </div>
       <div className="person">
         <img
-        src={`${process.env.PUBLIC_URL}/Group 1.png`}
+        src={`${process.env.PUBLIC_URL}/portfolio-pic-circle.png`}
         alt="my-design"
         />
       </div>
