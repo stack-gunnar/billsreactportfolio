@@ -1,7 +1,25 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
 const NavBar = () => {
+  const [open, setOpen] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(0);
+
+  const trackScreenWidth = () => {
+    const width = window.innerWidth;
+    setScreenWidth(width);
+    if (width > 800) {
+      setOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    trackScreenWidth();
+    window.addEventListener("resize", trackScreenWidth);
+    return () => window.removeEventListener("resize", trackScreenWidth);
+  }, []);
+
   return (
     <nav className="navbar">
       <div className="nav-wrapper">
@@ -17,13 +35,21 @@ const NavBar = () => {
         <img
             src={`${process.env.PUBLIC_URL}/menu-bar.png`}
             alt="Menu Bar"
+            style={{ opacity: !open ? 1 : 0 }}
+            onClick={() => {
+              setOpen(!open);
+            }}
           />
           <img
-            src={`${process.env.PUBLIC_URL}/menu-bar.png`}
-            alt="Menu Bar"
+            src={`${process.env.PUBLIC_URL}/close-round-line.png`}
+            alt="Close Button"
+            style={{ opacity: open ? 1 : 0 }}
+            onClick={() => {
+              setOpen(!open);
+            }}
           />
 
-          <ul>
+          <ul style={{ left : open ? "0" : "-100vw" }}>
             <li>
               <Link
                 to="/"

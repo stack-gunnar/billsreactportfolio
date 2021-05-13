@@ -38,12 +38,14 @@
 
 .home .person img {
   width: 70%;
+  
+  
 }
 
 @media (min-width: 800px) {
   .home {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content:space-between;
   }
   .home .title,
   .home .person {
@@ -54,6 +56,9 @@
   }
   .home .person img {
     width: 100%;
+    
+    
+    
   }
 }
 
