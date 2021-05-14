@@ -1,16 +1,23 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./style.css";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
+  const location = useLocation();
 
   const trackScreenWidth = () => {
     const width = window.innerWidth;
     setScreenWidth(width);
     if (width > 800) {
       setOpen(true);
+    }
+  };
+
+  const handleClose = () => {
+    if (screenWidth < 800) {
+      setOpen(false);
     }
   };
 
@@ -24,7 +31,7 @@ const NavBar = () => {
     <nav className="navbar">
       <div className="nav-wrapper">
         <div className="logo">
-          <Link>
+          <Link to="/">
           <img
             src={`${process.env.PUBLIC_URL}/Group 1.png`}
             alt="design"
@@ -52,38 +59,47 @@ const NavBar = () => {
           <ul style={{ left : open ? "0" : "-100vw" }}>
             <li>
               <Link
+                onClick={handleClose}
+                style={{ color: location.pathname === "/" && "4071fa"}}
                 to="/"
-                // onClick={handleClose}
-                // style={{ color: location.pathname === "/" && "4071fa"}}
               >
                 Home
               </Link>
             </li>
             <li>
               <Link
+                onClick={handleClose}
+                style={{ color: location.pathname === "/about" && "4071fa"}}
                 to="/about"
-                // onClick={handleClose}
-                // style={{ color: location.pathname === "/about" && "4071fa"}}
               >
                 About
               </Link>
             </li>
             <li>
               <Link
+                onClick={handleClose}
+                style={{ color: location.pathname === "/skills" && "4071fa"}}
                 to="/skills"
-                // onClick={handleClose}
-                // style={{ color: location.pathname === "/skills" && "4071fa"}}
               >
                 Skills
               </Link>
             </li>
             <li>
               <Link
+                onClick={handleClose}
+                style={{ color: location.pathname === "/projects" && "4071fa"}}
                 to="/projects"
-                // onClick={handleClose}
-                // style={{ color: location.pathname === "/projects" && "4071fa"}}
               >
-                Project
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                onClick={handleClose}
+                style={{ color: location.pathname === "/contact" && "4071fa"}}
+                to="/contact"
+              >
+                Contact Me
               </Link>
             </li>
           </ul>
